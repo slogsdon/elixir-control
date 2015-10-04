@@ -1,4 +1,7 @@
 # Control
+[![Build Status](https://img.shields.io/travis/slogsdon/elixir-control.svg?style=flat)](https://travis-ci.org/slogsdon/elixir-control)
+[![Coverage Status](https://img.shields.io/coveralls/slogsdon/elixir-control.svg?style=flat)](https://coveralls.io/r/slogsdon/elixir-control)
+[![Hex.pm Version](http://img.shields.io/hexpm/v/control.svg?style=flat)](https://hex.pm/packages/control)
 
 An exploratory look into functors, applicatives, and monads for Elixir. See [the accompanying blog post](http://www.slogsdon.com/functors-applicatives-and-monads-in-elixir/) for more details.
 

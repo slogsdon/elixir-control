@@ -7,6 +7,7 @@ defmodule Control.Mixfile do
      elixir: "~> 1.1",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     test_coverage: [tool: ExCoveralls],
      description: description,
      package: package,
      deps: deps]
@@ -17,7 +18,13 @@ defmodule Control.Mixfile do
   end
 
   defp deps do
-    []
+    [
+      { :earmark, "~> 0.1.17", only: :docs },
+      { :ex_doc, "~> 0.7.3", only: :docs },
+
+      { :excoveralls, "~> 0.3.11", only: :test },
+      { :dialyze, "~> 0.2.0", only: :test }
+    ]
   end
 
   defp description do
