@@ -6,6 +6,4 @@ defprotocol Control.Monad do
   """
   @spec bind(t, (term -> t)) :: t
   def bind(m, fun)
-
-  def left ~>> right
 end
