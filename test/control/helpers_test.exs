@@ -3,7 +3,6 @@ defmodule Control.HelpersTest do
   alias Data.Maybe
   import Maybe
   import Control.Helpers
-  import Control.Monad
 
   test "~>>" do
     assert nothing ~>> fn _ -> nothing end
