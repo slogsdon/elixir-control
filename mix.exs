@@ -3,11 +3,12 @@ defmodule Control.Mixfile do
 
   def project do
     [app: :control,
-     version: "0.0.1",
+     version: "0.0.2",
      elixir: "~> 1.0",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      test_coverage: [tool: ExCoveralls],
+     preferred_cli_env: [coveralls: :test],
      description: description,
      package: package,
      deps: deps]
