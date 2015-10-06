@@ -3,7 +3,7 @@ defmodule Control.Mixfile do
 
   def project do
     [app: :control,
-     version: "0.0.2",
+     version: "0.0.4-dev",
      elixir: "~> 1.0",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
