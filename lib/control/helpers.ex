@@ -6,7 +6,7 @@ defmodule Control.Helpers do
 
   alias Control.Monad
 
-  @compile {:inline, ~>>: 2}
+  @compile {:inline, ~>>: 2, <|>: 2}
 
   @doc """
   Bind operator.
@@ -23,5 +23,23 @@ defmodule Control.Helpers do
   @spec (Monad.t ~>> (term -> Monad.t)) :: Monad.t
   def left ~>> right do
     Monad.bind(left, right)
+  end
+
+  @doc """
+  Compose operator.
+
+  The compose operator (`.` in Haskell) removes the need
+  for using `apply/2` or `.()` to call an anonymous
+  function, so
+
+      f.(g.(x)) or f |> apply([g |> apply([x])])
+
+  becomes
+
+      (
+  """
+  @spec (Function.t <|> Function.t) :: Function.t
+  def left <|> right do
+    fn x -> left.(right.(x)) end
   end
 end

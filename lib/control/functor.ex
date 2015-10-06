@@ -14,8 +14,8 @@ defprotocol Control.Functor do
   All implementations of `Control.Functor` should obey the
   following implicit laws:
 
-      f |> fmap(id) = id |> apply([f])
-      f |> fmap(&(q |> apply([p |> apply([&1])]))) = f |> fmap(p) |> fmap (q)
+      f |> fmap(id)      = id.(f)
+      f |> fmap(q <|> p) = f |> fmap(p) |> fmap (q)
 
   where `f` is a functor, `id` is a function that returns
   its input, and `p` & `q` are functions.

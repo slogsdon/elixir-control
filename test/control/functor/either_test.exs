@@ -2,6 +2,7 @@ defmodule Control.Functor.EitherTest do
   use ExUnit.Case
   alias Data.Either
   import Either
+  import Control.Helpers
   import Control.Functor
 
   test "right" do
@@ -26,9 +27,7 @@ defmodule Control.Functor.EitherTest do
     p = fn x -> x + 1 end
     q = fn x -> x + 2 end
 
-    assert f |> fmap(id)
-      == id |> apply([f])
-    assert f |> fmap(&(q |> apply([p |> apply([&1])])))
-      == f |> fmap(p) |> fmap (q)
+    assert f |> fmap(id) == id.(f)
+    assert f |> fmap(q <|> p) == f |> fmap(p) |> fmap (q)
   end
 end

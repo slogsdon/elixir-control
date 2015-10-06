@@ -15,4 +15,13 @@ defmodule Control.HelpersTest do
     assert just(2) ~>> &(just(&1 * 2))
       == just(4)
   end
+
+  test "<|>" do
+    f = fn x -> x + 2 end
+    g = fn x -> x / 2 end
+
+    assert (f <|> g).(2) == f.(g.(2))
+    assert (f <|> g <|> &h/1).(2) == f.(g.(h(2)))
+  end
+  defp h(x), do: x - 2
 end
