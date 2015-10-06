@@ -28,4 +28,15 @@ defmodule Control.Monad.MaybeTest do
     assert just(2) ~>> &(just(&1 * 2))
       == just(4)
   end
+
+  test "laws" do
+    x = 1
+    m = just(1)
+    f = fn x -> just(x + 2) end
+    g = fn x -> just(x + 3) end
+
+    assert %Maybe{} |> return(x) ~>> f == f.(x)
+    assert m |> return == m
+    assert (m ~>> f) ~>> g == m ~>> &(f.(&1) ~>> g)
+  end
 end

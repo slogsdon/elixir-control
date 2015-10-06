@@ -14,7 +14,21 @@ defmodule Control.Functor.EitherTest do
   test "left" do
     assert left("error")
       == %Either{right: nil, left: "error"}
+    assert left("error") |> fmap(fn _ -> left("next error") end)
+      == %Either{right: nil, left: "error"}
     assert right(1) |> fmap(fn _ -> left("error") end)
       == %Either{right: %Either{right: nil, left: "error"}, left: nil}
+  end
+
+  test "laws" do
+    f = right(1)
+    id = fn x -> x end
+    p = fn x -> x + 1 end
+    q = fn x -> x + 2 end
+
+    assert f |> fmap(id)
+      == id |> apply([f])
+    assert f |> fmap(&(q |> apply([p |> apply([&1])])))
+      == f |> fmap(p) |> fmap (q)
   end
 end
