@@ -1,6 +1,6 @@
 defmodule Data.Maybe do
   @moduledoc """
-  The `Data.Maybe  type encapsulates an optional value.
+  The `Data.Maybe` type encapsulates an optional value.
 
   A value of type `Data.Maybe<a>` either contains a
   value of type `a` (represented as `just(a)`), or it
