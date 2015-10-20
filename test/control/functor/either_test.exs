@@ -7,7 +7,7 @@ defmodule Control.Functor.EitherTest do
 
   test "right" do
     assert right(1)
-      ==  %Either{right: 1, left: nil}
+      == %Either{right: 1, left: nil}
     assert right(1) |> fmap(&(&1+1))
       == %Either{right: 2, left: nil}
   end

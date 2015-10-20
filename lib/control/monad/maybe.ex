@@ -6,6 +6,6 @@ defimpl Control.Monad, for: Data.Maybe do
 
   def bind(%{nothing: true} = m, _), do: m
   def bind(%{just: v}, fun) do
-    fun |> apply([v])
+    v |> fun.()
   end
 end
