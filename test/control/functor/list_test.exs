@@ -17,6 +17,6 @@ defmodule Control.Functor.ListTest do
     q = fn x -> x + 2 end
 
     assert f |> fmap(id) == id.(f)
-    assert f |> fmap(q <|> p) == f |> fmap(p) |> fmap (q)
+    assert f |> fmap(q <|> p) == f |> fmap(p) |> fmap(q)
   end
 end
