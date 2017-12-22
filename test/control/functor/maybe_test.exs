@@ -13,11 +13,11 @@ defmodule Control.Functor.MaybeTest do
   end
 
   test "left" do
-    assert nothing
+    assert nothing()
       == %Maybe{just: nil, nothing: true}
-    assert nothing |> fmap(fn _ -> nothing end)
+    assert nothing() |> fmap(fn _ -> nothing() end)
       == %Maybe{just: nil, nothing: true}
-    assert just(1) |> fmap(fn _ -> nothing end)
+    assert just(1) |> fmap(fn _ -> nothing() end)
       == %Maybe{just: %Maybe{just: nil, nothing: true}, nothing: false}
   end
 

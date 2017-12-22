@@ -10,9 +10,9 @@ defmodule Control.Applicative.MaybeTest do
       == %Maybe{just: f, nothing: false}
     assert just(f) |> A.apply(just(2))
       == just(3)
-    assert nothing |> A.apply(just(2))
-      == nothing
-    assert nothing |> A.apply(nothing)
-      == nothing
+    assert nothing() |> A.apply(just(2))
+      == nothing()
+    assert nothing() |> A.apply(nothing())
+      == nothing()
   end
 end

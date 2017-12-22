@@ -3,15 +3,15 @@ defmodule Control.Mixfile do
 
   def project do
     [app: :control,
-     version: "0.0.5-dev",
+     version: "0.1.0",
      elixir: "~> 1.0",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      test_coverage: [tool: ExCoveralls],
-     preferred_cli_env: [coveralls: :test],
-     description: description,
-     package: package,
-     deps: deps]
+     preferred_cli_env: [coveralls: :test, bench: :test],
+     description: description(),
+     package: package(),
+     deps: deps()]
   end
 
   def application do
@@ -20,12 +20,13 @@ defmodule Control.Mixfile do
 
   defp deps do
     [
-      {:earmark, "~> 0.1.17", only: :docs},
-      {:ex_doc, "~> 0.10.0", only: :docs},
+      {:earmark, "~> 1.2", only: :dev},
+      {:ex_doc, "~> 0.18", only: :dev},
 
-      {:excoveralls, "~> 0.3.11", only: :test},
-      {:dialyze, "~> 0.2.0", only: :test},
-      {:dogma, "~> 0.0", only: :test},
+      {:excoveralls, "~> 0.7", only: :test},
+      {:dialyze, "~> 0.2", only: :test},
+      {:dogma, "~> 0.1", only: :test},
+      {:benchfella, "~> 0.3", only: :test},
     ]
   end
 
